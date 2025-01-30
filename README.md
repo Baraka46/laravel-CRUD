@@ -1,6 +1,6 @@
 # Student Management System - Laravel CRUD
 
-This project is a **Student Management System** built with **Laravel**. It allows you to manage students and courses, including CRUD (Create, Read, Update, Delete) operations for both students and courses. Additionally, you can assign multiple students to a course and remove students from courses.
+This project is a Student Management System built with Laravel. It allows you to manage students and courses, including CRUD (Create, Read, Update, Delete) operations for both students and courses. Additionally, you can assign multiple students to a course and remove students from courses.
 
 ## Features
 
@@ -15,83 +15,163 @@ This project is a **Student Management System** built with **Laravel**. It allow
 
 ## Routes
 
+Here are the routes used in the project:
+
 ### Course Routes
-
-- **`GET|HEAD /courses`**  
+- **GET|HEAD /courses**  
   Displays a list of all courses.  
-  **Controller**: `CourseController@index`
+  Controller: `CourseController@index`
 
-- **`POST /courses`**  
+- **POST /courses/store**  
   Creates a new course.  
-  **Controller**: `CourseController@store`
+  Controller: `CourseController@store`
 
-- **`GET|HEAD /courses/create`**  
+- **GET|HEAD /courses/create**  
   Displays the form to create a new course.  
-  **Controller**: `CourseController@create`
+  Controller: `CourseController@create`
 
-- **`GET|HEAD /courses/{course}`**  
+- **GET|HEAD /courses/{course}**  
   Displays details of a specific course.  
-  **Controller**: `CourseController@show`
+  Controller: `CourseController@show`
 
-- **`PUT|PATCH /courses/{course}`**  
+- **PUT|PATCH /courses/{course}**  
   Updates the details of a specific course.  
-  **Controller**: `CourseController@update`
+  Controller: `CourseController@update`
 
-- **`DELETE /courses/{course}`**  
+- **DELETE /courses/{course}**  
   Deletes a specific course.  
-  **Controller**: `CourseController@destroy`
+  Controller: `CourseController@destroy`
 
-- **`GET|HEAD /courses/{course}/assign-students`**  
+- **GET|HEAD /courses/{course}/assign-students**  
   Displays the form to assign students to a course.  
-  **Controller**: `CourseController@assignStudentsForm`
+  Controller: `CourseController@assignStudentsForm`
 
-- **`POST /courses/{course}/assign-students`**  
+- **POST /courses/{course}/assign-students**  
   Assigns students to a course.  
-  **Controller**: `CourseController@assignStudents`
+  Controller: `CourseController@assignStudents`
 
-- **`GET|HEAD /courses/{course}/edit`**  
+- **GET|HEAD /courses/{course}/edit**  
   Displays the form to edit a course.  
-  **Controller**: `CourseController@edit`
+  Controller: `CourseController@edit`
 
-- **`DELETE /courses/{course}/students/{student}`**  
+- **DELETE /courses/{course}/students/{student}**  
   Removes a student from a course.  
-  **Controller**: `CourseController@removeStudent`
+  Controller: `CourseController@removeStudent`
 
 ### Student Routes
-
-- **`GET|HEAD /students`**  
+- **GET|HEAD /students**  
   Displays a list of all students.  
-  **Controller**: `StudentController@index`
+  Controller: `StudentController@index`
 
-- **`POST /students`**  
+- **POST /students**  
   Creates a new student.  
-  **Controller**: `StudentController@store`
+  Controller: `StudentController@store`
 
-- **`GET|HEAD /students/create`**  
+- **GET|HEAD /students/create**  
   Displays the form to create a new student.  
-  **Controller**: `StudentController@create`
+  Controller: `StudentController@create`
 
-- **`GET|HEAD /students/{student}`**  
+- **GET|HEAD /students/{student}**  
   Displays details of a specific student.  
-  **Controller**: `StudentController@show`
+  Controller: `StudentController@show`
 
-- **`PUT|PATCH /students/{student}`**  
+- **PUT|PATCH /students/{student}**  
   Updates the details of a specific student.  
-  **Controller**: `StudentController@update`
+  Controller: `StudentController@update`
 
-- **`DELETE /students/{student}`**  
+- **DELETE /students/{student}**  
   Deletes a specific student.  
-  **Controller**: `StudentController@destroy`
+  Controller: `StudentController@destroy`
 
-- **`GET|HEAD /students/{student}/edit`**  
+- **GET|HEAD /students/{student}/edit**  
   Displays the form to edit a student.  
-  **Controller**: `StudentController@edit`
+  Controller: `StudentController@edit`
 
 ## Project Setup
 
-Follow these steps to set up the project on your local machine.
+Follow these steps to set up the project on your local machine:
 
-### 1. Clone the repository
-```bash
-git clone https://github.com/Baraka46/laravel-CRUD.git
-cd student-management
+1. **Clone the repository**
+    ```bash
+    git clone https://github.com/Baraka46/laravel-CRUD.git
+    cd student-management
+    ```
+
+2. **Install Dependencies**
+
+    **PHP Dependencies:**
+    ```bash
+    composer install
+    ```
+
+    **JavaScript Dependencies:**
+    ```bash
+    npm install
+    ```
+
+3. **Set Up the Environment**
+
+    - Copy the `.env.example` file to `.env`:
+    ```bash
+    cp .env.example .env
+    ```
+
+    - Generate the application key:
+    ```bash
+    php artisan key:generate
+    ```
+
+4. **Set Up the Database**
+
+    - Create a new database in your MySQL database.
+
+    - Update the `.env` file with your database credentials:
+    ```env
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=your_database_name
+    DB_USERNAME=your_database_user
+    DB_PASSWORD=your_database_password
+    ```
+
+5. **Run Migrations and Seeders**
+
+    - Run the migrations to create the necessary tables in the database:
+    ```bash
+    php artisan migrate
+    ```
+
+    - (Optional) Run the database seeder to populate your tables with sample data:
+    ```bash
+    php artisan db:seed
+    ```
+
+6. **Run the Development Server**
+
+    To run the Laravel development server, execute the following command:
+    ```bash
+    php artisan serve
+    ```
+
+    The application should now be accessible at [http://localhost:8000](http://localhost:8000).
+
+7. **Compile Frontend Assets**
+
+    To compile the frontend assets (e.g., styles, JavaScript), run:
+    ```bash
+    npm run dev
+    ```
+
+    This will compile your assets and serve them for development.
+
+## Usage
+
+### Student Management:
+- You can add, edit, or delete students.
+- Each student has a unique ID and can be assigned to multiple courses.
+
+### Course Management:
+- You can add, edit, or delete courses.
+- You can assign multiple students to a course using the "Assign Students" feature.
+- You can remove a student from a course if needed.
