@@ -10,3 +10,6 @@ Route::get('/', function () {
 });
 Route::resource('students', StudentController::class);
 Route::resource('courses', CourseController::class);
+Route::get('courses/{course}/assign-students', [CourseController::class, 'assignStudentsForm'])->name('courses.assign.form');
+Route::post('courses/{course}/assign-students', [CourseController::class, 'assignStudents'])->name('courses.assign');
+Route::delete('courses/{course}/students/{student}', [CourseController::class, 'removeStudent'])->name('courses.remove.student');
